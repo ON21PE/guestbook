@@ -59,4 +59,11 @@ class AuthController extends Controller
     public function guestbook(){
         return view('guestbook');
     }
+
+    public function logout(){
+        if(Session::has('loginId')){
+            Session::pull('loginId');
+            return redirect('login');
+        }
+    }
 } 
