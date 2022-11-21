@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\EntriesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +26,7 @@ Route::post('/register-user', [AuthController::class, 'registerUser'])->name('re
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
 Route::get('/guestbook', [IndexController::class, 'indexAction']);
 Route::get('/logout', [AuthController::class, 'logout']);
+Route::get('add-entry', [EntriesController::class, 'addEntry']);
+Route::post('save-entry', [EntriesController::class, 'saveEntry']);
+
+
