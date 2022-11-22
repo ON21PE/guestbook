@@ -24,9 +24,14 @@ Route::get('/login', [AuthController::class, 'login']);
 Route::get('/registration', [AuthController::class, 'registration']);
 Route::post('/register-user', [AuthController::class, 'registerUser'])->name('register-user');
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
-Route::get('/guestbook', [IndexController::class, 'indexAction']);
-Route::get('/logout', [AuthController::class, 'logout']);
-Route::get('add-entry', [EntriesController::class, 'addEntry']);
-Route::post('save-entry', [EntriesController::class, 'saveEntry']);
+Route::get('/guestbook', [IndexController::class, 'indexAction'])->middleware('isLoggedIn');
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('isLoggedIn');;
+Route::get('add-entry', [EntriesController::class, 'addEntry'])->middleware('isLoggedIn');;
+Route::get('edit-entry/{id}', [EntriesController::class, 'editEntry'])->middleware('isLoggedIn');;
+Route::post('save-entry', [EntriesController::class, 'saveEntry'])->middleware('isLoggedIn');;
+Route::post('update-entry', [EntriesController::class, 'updateEntry'])->middleware('isLoggedIn');;
+Route::get('delete-entry/{id}', [EntriesController::class, 'deleteEntry'])->middleware('isLoggedIn');;
+
+
 
 

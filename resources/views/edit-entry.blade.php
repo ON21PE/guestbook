@@ -22,11 +22,12 @@
     {{Session::get('success')}}    
     </div>
     @endif
-    <form method="POST" action="{{url('save-entry')}}">
-        @csrf
+    <form method="POST" action="{{url('update-entry')}}">
+      @csrf
+      <input type="hidden" name="id" value="{{$data->id}}">
   <label for="title" class="block text-sm font-medium text-gray-700">Titel</label>
   <div class="mt-1">
-    <input type="text" name="title" value="{{old('title')}}" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 max-w-[200px] focus:ring-indigo-800 sm:text-sm" placeholder="Titel">
+    <input type="text" name="title" value="{{$data->title}}" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 max-w-[200px] focus:ring-indigo-800 sm:text-sm" placeholder="Titel">
     @error('title')
     <p>{{$message}}</p>
     @enderror
@@ -34,7 +35,7 @@
 
   <label for="message" class="block text-sm font-medium text-gray-700">Nachricht</label>
   <div class="mt-1">
-    <textarea type="text" name="message" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 max-w-[200px] focus:ring-indigo-800 sm:text-sm" placeholder="Deine Nachricht">{{old('message')}}</textarea>
+    <textarea type="text" name="message" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 max-w-[200px] focus:ring-indigo-800 sm:text-sm" placeholder="Deine Nachricht">{{$data->message}}</textarea>
     @error('message')
     <p>{{$message}}</p>
     @enderror

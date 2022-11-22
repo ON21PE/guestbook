@@ -14,13 +14,18 @@
   <body class="h-full">
 </script>
 <a href="{{url('add-entry')}}" class="inline-flex items-center rounded-md border border-transparent bg-green-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Eintrag hinzufügen</a>
-
+@if(Session::has('success'))
+    <div>
+    {{Session::get('success')}}    
+    </div>
+    @endif
 @foreach ($data as $entry)
     <p><b> {{$entry->title}}</b></p>
     <p> {{$entry->message}}</p>
     <p> {{$entry->created_at}}</p>
 
-    <button type="button" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Button text</button>
+    <a href="{{url('edit-entry/'.$entry->id)}}" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Bearbeiten</a>
+    <a href="{{url('delete-entry/'.$entry->id)}}" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Löschen</a>
 
 @endforeach
 
