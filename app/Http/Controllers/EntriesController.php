@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Entries;
+use Session;
 
 class EntriesController extends Controller
 {
@@ -21,6 +22,7 @@ class EntriesController extends Controller
         $entry = new Entries();
         $entry->title = $title;
         $entry->message = $message;
+        $entry->users_id = Session::get('loginId');
         $entry->save();
         return redirect()->back()->with('success', 'Eintrag ins Gästebuch hinzugefügt');
 
