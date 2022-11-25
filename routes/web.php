@@ -31,6 +31,7 @@ Route::get('edit-entry/{id}', [EntriesController::class, 'editEntry'])->middlewa
 Route::post('save-entry', [EntriesController::class, 'saveEntry'])->middleware('isLoggedIn');;
 Route::post('update-entry', [EntriesController::class, 'updateEntry'])->middleware('isLoggedIn');;
 Route::get('delete-entry/{id}', [EntriesController::class, 'deleteEntry'])->middleware('isLoggedIn');;
+Route::get('/search', [EntriesController::class, 'search'])->middleware('isLoggedIn');;
 
 
 
