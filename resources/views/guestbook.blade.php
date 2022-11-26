@@ -28,8 +28,10 @@
             <h1 class="text-xl font-semibold text-gray-900">Gästebuch</h1>
             <p class="mt-2 text-sm text-gray-700">Eine Liste aller Einträge</p>
         </div>
-        <div>
-          <input type="search" name="search" id="search" placeholder="Suchbegriff hier eingeben...">
+        <div class="">
+            <input type="search" name="search"
+                class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                id="search" placeholder="Suchen...">
         </div>
         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
             <a href="{{ url('add-entry') }}"
@@ -97,32 +99,34 @@
 </div>
 
 <div class="mt-6 px-4 sm:px-6 lg:px-8">
-<a href="logout"
-    class="inline-flex items-center rounded-md border border-transparent bg-red-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Ausloggen</a>
+    <a href="logout"
+        class="inline-flex items-center rounded-md border border-transparent bg-red-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Ausloggen</a>
 </div>
 
 <script type="text/javascript">
-  $('#search').on('keyup', function(){
+    $('#search').on('keyup', function() {
 
-    $value=$(this).val();
+        $value = $(this).val();
 
-    if($value){
-      $('.fulldata').hide();
-      $('.searchdata').show();
-    }else{
-      $('.fulldata').show();
-      $('.searchdata').hide();
-    }
+        if ($value) {
+            $('.fulldata').hide();
+            $('.searchdata').show();
+        } else {
+            $('.fulldata').show();
+            $('.searchdata').hide();
+        }
 
-    $.ajax({
-      type:'get',
-      url:'{{URL::to('search')}}',
-      data:{'search':$value},
+        $.ajax({
+            type: 'get',
+            url: '{{ URL::to('search') }}',
+            data: {
+                'search': $value
+            },
 
-      success:function(data){
-        console.log(data);
-        $('#content').html(data);
-      }
-    });
-  })
+            success: function(data) {
+                console.log(data);
+                $('#content').html(data);
+            }
+        });
+    })
 </script>
