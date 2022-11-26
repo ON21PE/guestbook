@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\IndexController;
 use App\Http\Controllers\EntriesController;
 
 
@@ -24,7 +23,7 @@ Route::get('/login', [AuthController::class, 'login']);
 Route::get('/registration', [AuthController::class, 'registration']);
 Route::post('/register-user', [AuthController::class, 'registerUser'])->name('register-user');
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
-Route::get('/guestbook', [IndexController::class, 'indexAction'])->middleware('isLoggedIn');
+Route::get('/guestbook', [EntriesController::class, 'indexAction'])->middleware('isLoggedIn');
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('isLoggedIn');;
 Route::get('add-entry', [EntriesController::class, 'addEntry'])->middleware('isLoggedIn');;
 Route::get('edit-entry/{id}', [EntriesController::class, 'editEntry'])->middleware('isLoggedIn');;

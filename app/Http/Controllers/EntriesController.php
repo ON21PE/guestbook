@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Entries;
 use Session;
+use App\Models\User;
 
 class EntriesController extends Controller
 {
@@ -73,5 +74,11 @@ class EntriesController extends Controller
             
         }
         return response($output);
+    }
+    public function indexAction(){
+        $data = Entries::get();
+        $users = User::get();
+        return view('guestbook')->with(['data'=>$data, 'users'=>$users]);
+
     }
 }

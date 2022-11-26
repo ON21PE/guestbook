@@ -21,7 +21,6 @@
     </div>
 @endif
 
-
 <div class="px-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
@@ -78,12 +77,10 @@
                                     </td>
                                     <td
                                         class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                        @if ($entry->users_id == $user->id)
                                             <a href="{{ url('edit-entry/' . $entry->id) }}"
                                                 class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Bearbeiten</a>
                                             <a href="{{ url('delete-entry/' . $entry->id) }}"
                                                 class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Löschen</a>
-                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
